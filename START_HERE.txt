@@ -1,0 +1,26 @@
+VIBELEDGER - PROFESSIONAL NETWORKING WEBSITE
+
+Includes a LinkedIn-inspired (original, not affiliated) professional layout.
+Features: registration/login/logout, people search, skills, connections,
+skill swaps, posts/feed, Proof of Vibe portfolio, peer attestations/reviews,
+reputation, resume upload/download, and Socket.IO real-time refresh.
+
+Run:
+1. Extract ZIP.
+2. Open folder containing package.json in VS Code.
+3. PowerShell: npm.cmd install
+4. PowerShell: npm.cmd start
+5. Open http://localhost:3000
+
+Demo:
+mira@example.com / demo123
+aarav@example.com / demo123
+zoya@example.com / demo123
+riya@example.com / demo123
+dev@example.com / demo123
+ananya@example.com / demo123
+kabir@example.com / demo123
+
+Resume: My profile & resume > choose PDF/DOC/DOCX (max 5 MB) > Upload resume.
+Real-time updates work across browsers connected to this local server.
+This ZIP is a local project; public deployment requires hosting and production security setup.

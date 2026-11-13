@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#35266f"><meta name="description" content="Trade micro-skills. Build proof. Grow together.">
+  <title>VibeLedger | Skills, Projects & Connections</title><link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div id="authScreen" class="auth-screen">
+  <div class="auth-brand"><div class="logo-mark">v.</div><span>VibeLedger</span></div>
+  <div class="auth-copy"><p class="eyebrow">YOUR SKILLS HAVE VALUE</p><h1>Trade skills.<br><span>Build proof.</span><br>Grow together.</h1><p class="muted">A community where you teach what you know, learn what you love, and earn trust through real collaboration.</p><div class="auth-pills"><span>✦ No money needed</span><span>✦ Peer-attested proof</span><span>✦ Tiny swaps, big growth</span></div></div>
+  <div class="auth-card"><div class="auth-tabs"><button class="tab active" data-auth="login">Sign in</button><button class="tab" data-auth="register">Create account</button></div>
+    <form id="authForm"><div id="nameField" class="field hidden"><label>Your name</label><input name="name" placeholder="e.g. Mira Rao"></div><div class="field"><label>Email address</label><input name="email" type="email" required placeholder="you@example.com"></div><div class="field"><label>Password</label><input name="password" type="password" minlength="6" required placeholder="At least 6 characters"></div><button class="btn primary full" type="submit" id="authSubmit">Sign in <span>→</span></button><p id="authError" class="error"></p></form>
+    <div class="demo-note"><strong>Want to explore?</strong><br>Demo: <code>mira@example.com</code> / <code>demo123</code></div>
+  </div>
+</div>
+<div id="appScreen" class="app-shell hidden">
+  <aside class="sidebar"><a class="brand" href="#"><span class="logo-mark">v.</span><span>VibeLedger</span></a><div class="side-label">WORKSPACE</div>
+    <button class="nav-item active" data-page="home"><span>◫</span> Overview</button><button class="nav-item" data-page="discover"><span>⌕</span> Discover people</button><button class="nav-item" data-page="connections"><span>♧</span> My connections</button><button class="nav-item" data-page="exchanges"><span>⇄</span> Skill exchanges <b id="exchangeBadge" class="nav-badge hidden">0</b></button><button class="nav-item" data-page="proofs"><span>✦</span> Proof of Vibe</button><button class="nav-item" data-page="community"><span>◎</span> Community feed</button><button class="nav-item" data-page="profile"><span>♙</span> My profile & resume</button>
+    <div class="sidebar-bottom"><div class="mini-profile"><div id="sideAvatar" class="avatar">MR</div><div><strong id="sideName">Your name</strong><small id="sideEmail">you@example.com</small></div><button class="icon-btn" data-logout title="Sign out" aria-label="Sign out">↗</button></div><p class="tiny muted">Built on shared knowledge, not status.</p></div>
+  </aside>
+  <main class="main-area"><header class="topbar"><div><p class="eyebrow">PEER-TO-PEER GROWTH</p><h2 id="pageTitle">Your creative orbit</h2></div><div class="top-search"><span>⌕</span><input id="globalSearch" type="search" placeholder="Search people, skills, projects"></div><div class="top-actions"><span class="live-dot" id="liveStatus">● Live community</span><div class="notification-wrap"><button id="notificationToggle" class="notification-toggle" aria-label="Notifications">♧<span id="notificationBadge" class="notification-badge hidden">0</span></button><div id="notificationPanel" class="notification-panel hidden"><div class="notification-panel-head"><strong>Notifications</strong><button class="text-btn" data-notification-page="connections">Connections</button></div><div id="notificationList"></div></div></div><button class="sign-out-btn" data-logout>Sign out ↗</button><button class="avatar small" id="topAvatar" title="Open profile">MR</button></div></header>
+    <section id="page-home" class="page">
+      <div class="welcome-card"><div><p class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</p><h1>Make your skills<br>go <span>further.</span></h1><p>Find your people, swap what you know, and build a portfolio backed by real collaboration.</p><button class="btn light" data-go="discover">Find your next skill swap <span>→</span></button></div><div class="orb-art"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orb-center">✳</div><span class="float-chip chip-one">✦ Creator</span><span class="float-chip chip-two">↗ Builder</span><span class="float-chip chip-three">◎ Learner</span></div></div>
+      <div id="statsGrid" class="stats-grid"></div>
+      <div class="section-head"><div><p class="eyebrow">YOUR NEXT COLLABORATION</p><h3>People in your orbit</h3></div><button class="text-btn" data-go="discover">Explore all →</button></div><div id="homePeople" class="people-grid"></div>
+      <div class="section-head"><div><p class="eyebrow">SHOW, DON'T JUST TELL</p><h3>Fresh proof of vibe</h3></div><button class="text-btn" data-go="proofs">See all proof →</button></div><div id="homeProofs" class="proof-grid"></div>
+      <div class="section-head"><div><p class="eyebrow">TAKE A QUICK BREAK</p><h3>Play a skill quiz</h3></div></div><div id="skillQuiz"></div>
+    </section>
+    <section id="page-discover" class="page hidden"><div class="page-intro"><p class="muted">Find a person whose skills complement yours. Every great collaboration starts with a conversation.</p></div><div class="search-row"><input id="peopleSearch" placeholder="Search names, skills, or interests…"><select id="skillFilter"><option value="">All skills</option><option>JavaScript</option><option>React</option><option>Motion Design</option><option>Blender</option><option>Figma</option><option>Python Automation</option></select></div><div id="peopleGrid" class="people-grid"></div></section>
+    <section id="page-connections" class="page hidden"><div id="connectionsContent"></div></section>
+    <section id="page-exchanges" class="page hidden"><div class="section-head"><div><p class="eyebrow">VALUE WITHOUT A PRICE TAG</p><h3>Your skill swaps</h3></div></div><div class="info-strip">⇄ <span>One person’s skill gap is another person’s chance to shine.</span></div><div id="exchangeList" class="exchange-list"></div></section>
+    <section id="page-proofs" class="page hidden"><div class="section-head"><div><p class="eyebrow">PORTFOLIO, WITH RECEIPTS</p><h3>Proof of Vibe</h3></div><div class="proof-page-actions"><button class="btn outline" data-go="home">← Back home</button><button class="btn primary" id="addProofBtn">＋ Add proof</button></div></div><div id="proofPortfolioSummary"></div><p class="muted">Projects, peer attestations, and skills that show what you can do.</p><div id="proofGrid" class="proof-grid"></div></section>
+    <section id="page-community" class="page hidden"><div class="section-head"><div><p class="eyebrow">THE INTERNET, BUT HELPFUL</p><h3>Community pulse</h3></div></div><div class="composer"><div id="composerAvatar" class="avatar">MR</div><div class="composer-main"><textarea id="postText" placeholder="What are you learning, building, or happy to teach?"></textarea><div class="composer-foot"><input id="postTags" placeholder="Tags (comma separated)"><button id="publishPost" class="btn primary">Share update ↗</button></div></div></div><div id="feed" class="feed"></div></section>
+    <section id="page-profile" class="page hidden"><div id="profileContent"></div></section>
+  </main>
+</div>
+<div id="modal" class="modal hidden"><div class="modal-backdrop" data-close></div><div class="modal-card"><button class="modal-close" data-close>×</button><div id="modalContent"></div></div></div>
+<div id="toast" class="toast"></div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/app.js"></script>
+</body></html>

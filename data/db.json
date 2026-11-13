@@ -1,0 +1,335 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Aarav Mehta",
+      "email": "aarav@example.com",
+      "passwordHash": "$2a$10$mYatT9AyPi9fUfu.5Jz5te/gfeiyLgQxJopsF2LRcVphki8mdOXDi",
+      "bio": "Motion designer who loves making ideas move.",
+      "location": "Hyderabad, India",
+      "teach": [
+        "Motion Design",
+        "After Effects",
+        "Storyboarding"
+      ],
+      "learn": [
+        "3D Animation",
+        "Blender"
+      ],
+      "avatar": "AM",
+      "connections": [
+        3,
+        2
+      ],
+      "createdAt": "2026-10-30T08:03:17.925Z"
+    },
+    {
+      "id": 2,
+      "name": "Mira Rao",
+      "email": "mira@example.com",
+      "passwordHash": "$2a$10$jiNpkZ78slEcyCVbor/ExuabQBHMbeawMcZvrbATefZmlOoowNHK.",
+      "bio": "Frontend developer building playful digital experiences.",
+      "location": "Warangal, India",
+      "teach": [
+        "HTML/CSS",
+        "JavaScript",
+        "React"
+      ],
+      "learn": [
+        "UI/UX",
+        "Figma"
+      ],
+      "avatar": "MR",
+      "connections": [
+        1
+      ],
+      "createdAt": "2026-10-30T08:03:17.998Z"
+    },
+    {
+      "id": 3,
+      "name": "Zoya Khan",
+      "email": "zoya@example.com",
+      "passwordHash": "$2a$10$1ED0mE.lfIAz6cvhndrhXO5OzZ.wa0uhqDzyqv8PhOpJfqkT1kXSK",
+      "bio": "Digital artist exploring 3D worlds and visual storytelling.",
+      "location": "Bengaluru, India",
+      "teach": [
+        "Digital Illustration",
+        "Blender",
+        "3D Modeling"
+      ],
+      "learn": [
+        "Python Automation",
+        "Web Design"
+      ],
+      "avatar": "ZK",
+      "connections": [
+        1
+      ],
+      "createdAt": "2026-10-30T08:03:18.071Z"
+    },
+    {
+      "id": 4,
+      "name": "SIDDAM SHETTI KAVYA",
+      "email": "2403a51037@sru.edu",
+      "passwordHash": "$2a$10$rYH/9pkp1Tn7K842VOiUHO9DJkpe0Gt95miVUFqnIVuVxWtxjLNFu",
+      "bio": "New to VibeLedger — ready to exchange skills.",
+      "location": "India",
+      "teach": [],
+      "learn": [],
+      "avatar": "SS",
+      "connections": [],
+      "createdAt": "2026-10-30T08:04:00.612Z",
+      "resume": {
+        "filename": "resume-4-1793347485414.pdf",
+        "originalName": "s.kavya _resume.pdf",
+        "uploadedAt": "2026-10-30T08:04:45.422Z"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Riya Sen",
+      "email": "riya@example.com",
+      "passwordHash": "$2a$10$j47B4gybif1yE0hAVN8lw.Kbzj0JSiTA6nYanH98N5q3COr6XUpmS",
+      "bio": "UX designer who turns research insights into friendly, accessible interfaces.",
+      "location": "Pune, India",
+      "teach": [
+        "UI/UX Design",
+        "Figma",
+        "User Research"
+      ],
+      "learn": [
+        "Frontend Development",
+        "Motion Design"
+      ],
+      "avatar": "RS",
+      "connections": [],
+      "createdAt": "2026-10-30T08:09:21.086Z"
+    },
+    {
+      "id": 6,
+      "name": "Dev Patel",
+      "email": "dev@example.com",
+      "passwordHash": "$2a$10$KDoNc7xVOcS6f8Fruj2zv.8SDibMELgGboFLh3mNcRX2bcXZvdkF6",
+      "bio": "Curious data enthusiast making useful tools with Python and simple dashboards.",
+      "location": "Ahmedabad, India",
+      "teach": [
+        "Python",
+        "Data Visualization",
+        "SQL"
+      ],
+      "learn": [
+        "Product Design",
+        "Public Speaking"
+      ],
+      "avatar": "DP",
+      "connections": [],
+      "createdAt": "2026-10-30T08:09:21.162Z"
+    },
+    {
+      "id": 7,
+      "name": "Ananya Iyer",
+      "email": "ananya@example.com",
+      "passwordHash": "$2a$10$lrRhsMUE6a0KH/.XVH5m9.JqVqeJBF7Yj4i3bCZK7r.XKBtOMhmqO",
+      "bio": "Content strategist helping early ideas find a clear and memorable voice.",
+      "location": "Chennai, India",
+      "teach": [
+        "Content Writing",
+        "Storytelling",
+        "Social Media"
+      ],
+      "learn": [
+        "Video Editing",
+        "Brand Design"
+      ],
+      "avatar": "AI",
+      "connections": [],
+      "createdAt": "2026-10-30T08:09:21.236Z"
+    },
+    {
+      "id": 8,
+      "name": "Kabir Shah",
+      "email": "kabir@example.com",
+      "passwordHash": "$2a$10$unB34w2cdKGVyqLwQ..2JOcWwBQnUsZIAgZGhcMA5BPYle6QBD6sa",
+      "bio": "Photographer and maker sharing practical tips for visual storytelling.",
+      "location": "Mumbai, India",
+      "teach": [
+        "Photography",
+        "Lightroom",
+        "Visual Storytelling"
+      ],
+      "learn": [
+        "Web Design",
+        "JavaScript"
+      ],
+      "avatar": "KS",
+      "connections": [],
+      "createdAt": "2026-10-30T08:09:21.310Z"
+    }
+  ],
+  "exchanges": [
+    {
+      "id": 2,
+      "fromId": 2,
+      "toId": 1,
+      "teachSkill": "HTML/CSS",
+      "learnSkill": "Motion Design",
+      "note": "",
+      "status": "pending",
+      "createdAt": "2026-11-07T11:47:00.119Z"
+    },
+    {
+      "id": 1,
+      "fromId": 1,
+      "toId": 2,
+      "teachSkill": "Motion Design",
+      "learnSkill": "React",
+      "note": "A two-session skill swap to build a tiny animated portfolio.",
+      "status": "completed",
+      "createdAt": "2026-10-30T08:03:18.071Z"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "userId": 2,
+      "text": "Just shipped a tiny interactive portfolio experiment. Looking for someone to swap React tips for Figma feedback ✨",
+      "tags": [
+        "React",
+        "Figma"
+      ],
+      "likes": [
+        1
+      ],
+      "createdAt": "2026-10-30T08:03:18.071Z"
+    },
+    {
+      "id": 2,
+      "userId": 3,
+      "text": "My first Blender scene is finally done. Happy to share the workflow with anyone learning 3D!",
+      "tags": [
+        "Blender",
+        "3D"
+      ],
+      "likes": [],
+      "createdAt": "2026-10-30T08:03:18.071Z"
+    }
+  ],
+  "proofs": [
+    {
+      "id": 1,
+      "userId": 1,
+      "title": "Animated product teaser",
+      "description": "Created a 12-second motion design teaser for a fictional launch.",
+      "skills": [
+        "Motion Design",
+        "Storyboarding"
+      ],
+      "link": "https://example.com",
+      "attestations": [
+        2
+      ],
+      "createdAt": "2026-10-30T08:03:18.071Z"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "title": "Accessible portfolio UI",
+      "description": "Built a responsive portfolio concept with keyboard-friendly navigation.",
+      "skills": [
+        "HTML/CSS",
+        "Accessibility"
+      ],
+      "link": "",
+      "attestations": [
+        1,
+        3
+      ],
+      "createdAt": "2026-10-30T08:03:18.071Z"
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "fromId": 2,
+      "toId": 1,
+      "exchangeId": 1,
+      "rating": 5,
+      "text": "Clear, reliable, and great at explaining the creative process.",
+      "createdAt": "2026-10-30T08:03:18.071Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": 3,
+      "userId": 1,
+      "actorId": 2,
+      "type": "exchange",
+      "message": "Mira Rao sent you a skill-swap request.",
+      "page": "exchanges",
+      "createdAt": "2026-11-07T11:47:00.119Z",
+      "readAt": null
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "actorId": 2,
+      "type": "connection",
+      "message": "Mira Rao connected with you.",
+      "page": "connections",
+      "createdAt": "2026-11-07T11:46:56.837Z",
+      "readAt": null
+    },
+    {
+      "id": 1,
+      "userId": 5,
+      "actorId": 2,
+      "type": "connection",
+      "message": "Mira Rao connected with you.",
+      "page": "connections",
+      "createdAt": "2026-10-30T09:24:07.854Z",
+      "readAt": "2026-10-30T09:24:07.866Z"
+    }
+  ],
+  "points": [
+    {
+      "id": 1,
+      "userId": 2,
+      "activity": "connection",
+      "points": 5,
+      "date": "2026-10-30",
+      "createdAt": "2026-10-30T09:24:07.854Z"
+    },
+    {
+      "id": 2,
+      "userId": 5,
+      "activity": "quiz",
+      "points": 5,
+      "date": "2026-10-30",
+      "createdAt": "2026-10-30T09:24:07.875Z"
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "activity": "quiz",
+      "points": 5,
+      "date": "2026-10-30",
+      "createdAt": "2026-10-30T09:27:06.225Z"
+    },
+    {
+      "id": 4,
+      "userId": 2,
+      "activity": "quiz",
+      "points": 5,
+      "date": "2026-11-07",
+      "createdAt": "2026-11-07T11:46:46.708Z"
+    },
+    {
+      "id": 5,
+      "userId": 2,
+      "activity": "connection",
+      "points": 5,
+      "date": "2026-11-07",
+      "createdAt": "2026-11-07T11:46:56.837Z"
+    }
+  ]
+}
