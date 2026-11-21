@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#35266f"><meta name="description" content="Trade micro-skills. Build proof. Grow together.">
-  <title>VibeLedger | Skills, Projects & Connections</title><link rel="stylesheet" href="/css/style.css">
+  <title>VibeLedger | Skills, Projects & Connections</title><link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div id="authScreen" class="auth-screen">
@@ -19,7 +19,7 @@
     <button class="nav-item active" data-page="home"><span>◫</span> Overview</button><button class="nav-item" data-page="discover"><span>⌕</span> Discover people</button><button class="nav-item" data-page="connections"><span>♧</span> My connections</button><button class="nav-item" data-page="exchanges"><span>⇄</span> Skill exchanges <b id="exchangeBadge" class="nav-badge hidden">0</b></button><button class="nav-item" data-page="proofs"><span>✦</span> Proof of Vibe</button><button class="nav-item" data-page="community"><span>◎</span> Community feed</button><button class="nav-item" data-page="profile"><span>♙</span> My profile & resume</button>
     <div class="sidebar-bottom"><div class="mini-profile"><div id="sideAvatar" class="avatar">MR</div><div><strong id="sideName">Your name</strong><small id="sideEmail">you@example.com</small></div><button class="icon-btn" data-logout title="Sign out" aria-label="Sign out">↗</button></div><p class="tiny muted">Built on shared knowledge, not status.</p></div>
   </aside>
-  <main class="main-area"><header class="topbar"><div><p class="eyebrow">PEER-TO-PEER GROWTH</p><h2 id="pageTitle">Your creative orbit</h2></div><div class="top-search"><span>⌕</span><input id="globalSearch" type="search" placeholder="Search people, skills, projects"></div><div class="top-actions"><span class="live-dot" id="liveStatus">● Live community</span><div class="notification-wrap"><button id="notificationToggle" class="notification-toggle" aria-label="Notifications">♧<span id="notificationBadge" class="notification-badge hidden">0</span></button><div id="notificationPanel" class="notification-panel hidden"><div class="notification-panel-head"><strong>Notifications</strong><button class="text-btn" data-notification-page="connections">Connections</button></div><div id="notificationList"></div></div></div><button class="sign-out-btn" data-logout>Sign out ↗</button><button class="avatar small" id="topAvatar" title="Open profile">MR</button></div></header>
+  <main class="main-area"><div id="staticPreviewNotice" class="info-strip hidden" role="status">GitHub Pages preview: sample data only. Sign-in, uploads, edits, and other server actions are unavailable here.</div><header class="topbar"><div><p class="eyebrow">PEER-TO-PEER GROWTH</p><h2 id="pageTitle">Your creative orbit</h2></div><div class="top-search"><span>⌕</span><input id="globalSearch" type="search" placeholder="Search people, skills, projects"></div><div class="top-actions"><span class="live-dot" id="liveStatus">● Live community</span><div class="notification-wrap"><button id="notificationToggle" class="notification-toggle" aria-label="Notifications">♧<span id="notificationBadge" class="notification-badge hidden">0</span></button><div id="notificationPanel" class="notification-panel hidden"><div class="notification-panel-head"><strong>Notifications</strong><button class="text-btn" data-notification-page="connections">Connections</button></div><div id="notificationList"></div></div></div><button class="sign-out-btn" data-logout>Sign out ↗</button><button class="avatar small" id="topAvatar" title="Open profile">MR</button></div></header>
     <section id="page-home" class="page">
       <div class="welcome-card"><div><p class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</p><h1>Make your skills<br>go <span>further.</span></h1><p>Find your people, swap what you know, and build a portfolio backed by real collaboration.</p><button class="btn light" data-go="discover">Find your next skill swap <span>→</span></button></div><div class="orb-art"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orb-center">✳</div><span class="float-chip chip-one">✦ Creator</span><span class="float-chip chip-two">↗ Builder</span><span class="float-chip chip-three">◎ Learner</span></div></div>
       <div id="statsGrid" class="stats-grid"></div>
@@ -37,6 +37,5 @@
 </div>
 <div id="modal" class="modal hidden"><div class="modal-backdrop" data-close></div><div class="modal-card"><button class="modal-close" data-close>×</button><div id="modalContent"></div></div></div>
 <div id="toast" class="toast"></div>
-<script src="/socket.io/socket.io.js"></script>
-<script src="/js/app.js"></script>
+<script src="js/app.js"></script>
 </body></html>

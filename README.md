@@ -107,3 +107,6 @@ This application requires a Node.js host; GitHub Pages cannot run its Express AP
 4. Wait for the first deploy, then open the service URL. The `/api/health` endpoint is used for health checks.
 
 The persistent disk keeps the JSON database and resumes across restarts and deploys. The app uses a JSON file for persistence and is intended for a single server instance; it is not suitable for scaling to multiple instances or production workloads with concurrent users.
+
+## GitHub Pages static preview
+With GitHub Pages set to deploy from the `main` branch and repository root, the root `index.html` opens the static preview in `public/`. The preview uses sample data; sign-in, uploads, edits, and other server-backed actions require the full Node.js app on Render.

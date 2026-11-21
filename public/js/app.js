@@ -1,5 +1,6 @@
 const $ = (s, root = document) => root.querySelector(s);
 const $$ = (s, root = document) => [...root.querySelectorAll(s)];
+const isStaticPreview = location.hostname.endsWith(".github.io") || new URLSearchParams(location.search).has("static-preview");
 let me = null, authMode = "login", people = [], exchanges = [], posts = [], proofs = [], stats = {}, notifications = [], notificationUnreadCount = 0;
 const pageTitles = { home: "Your creative orbit", discover: "Find your people", connections: "My connections", exchanges: "Skill exchanges", proofs: "Proof of Vibe", community: "Community pulse", profile: "Your profile" };
 const skillQuizQuestions = [
@@ -18,8 +19,34 @@ function tagList(items = [], kind = "") { return items.length ? `<div class="tag
 function setAuth(mode) { authMode = mode; $$(".tab").forEach(b => b.classList.toggle("active", b.dataset.auth === mode)); $("#nameField").classList.toggle("hidden", mode !== "register"); $("#authForm").elements.name.required = mode === "register"; $("#authSubmit").innerHTML = mode === "login" ? 'Sign in <span>→</span>' : 'Create my account <span>→</span>'; $("#authError").textContent = "" }
 $$(".tab").forEach(b => b.addEventListener("click", () => setAuth(b.dataset.auth)));
 $("#authForm").addEventListener("submit", async e => { e.preventDefault(); $("#authError").textContent = ""; const f = new FormData(e.currentTarget); const body = Object.fromEntries(f.entries()); try { const d = await api(`/api/${authMode}`, { method: "POST", body: JSON.stringify(body) }); me = d.user; showApp(); } catch (err) { $("#authError").textContent = err.message } });
-async function boot() { try { const d = await api("/api/me"); if (d.user) { me = d.user; showApp() } } catch { } }
-function showApp() { $("#authScreen").classList.add("hidden"); $("#appScreen").classList.remove("hidden"); updateMe(); navigate("home"); refreshAll().catch(e => toast(e.message, true)) }
+function initializeStaticPreview() {
+  const createdAt = new Date().toISOString();
+  me = { id: 2, name: "Mira Rao", email: "mira@example.com", bio: "Frontend developer building playful digital experiences.", location: "Warangal, India", teach: ["HTML/CSS", "JavaScript", "React"], learn: ["UI/UX", "Figma"], avatar: "MR", connections: [1, 3], reputation: "5.0", reviewCount: 2, completedSwaps: 1 };
+  people = [
+    { id: 1, name: "Aarav Mehta", bio: "Motion designer who loves making ideas move.", location: "Hyderabad, India", teach: ["Motion Design", "After Effects"], learn: ["Blender"], avatar: "AM", reputation: "5.0", reviewCount: 1, completedSwaps: 1, createdAt },
+    { id: 3, name: "Zoya Khan", bio: "Digital artist exploring 3D worlds and visual storytelling.", location: "Bengaluru, India", teach: ["Digital Illustration", "Blender"], learn: ["Python Automation"], avatar: "ZK", reputation: "New", reviewCount: 0, completedSwaps: 0, createdAt },
+    { id: 4, name: "Riya Sen", bio: "UX designer who turns research insights into friendly, accessible interfaces.", location: "Pune, India", teach: ["UI/UX Design", "Figma"], learn: ["Frontend Development"], avatar: "RS", reputation: "New", reviewCount: 0, completedSwaps: 0, createdAt },
+    { id: 5, name: "Dev Patel", bio: "Curious data enthusiast making useful tools with Python.", location: "Ahmedabad, India", teach: ["Python", "Data Visualization"], learn: ["Product Design"], avatar: "DP", reputation: "New", reviewCount: 0, completedSwaps: 0, createdAt }
+  ];
+  exchanges = [{ id: 1, fromId: 1, toId: 2, from: people[0], to: me, teachSkill: "Motion Design", learnSkill: "React", note: "A two-session skill swap to build a tiny animated portfolio.", status: "completed", createdAt }];
+  posts = [
+    { id: 1, userId: 2, author: me, text: "Just shipped a tiny interactive portfolio experiment. Looking for someone to swap React tips for Figma feedback.", tags: ["React", "Figma"], likes: [1, 3], createdAt },
+    { id: 2, userId: 3, author: people[1], text: "My first Blender scene is finally done. Happy to share the workflow with anyone learning 3D!", tags: ["Blender", "3D"], likes: [2], createdAt }
+  ];
+  proofs = [
+    { id: 1, userId: 2, user: me, title: "Accessible portfolio UI", description: "Built a responsive portfolio concept with keyboard-friendly navigation.", skills: ["HTML/CSS", "Accessibility"], attestations: [1, 3], createdAt },
+    { id: 2, userId: 1, user: people[0], title: "Animated product teaser", description: "Created a 12-second motion design teaser for a fictional launch.", skills: ["Motion Design", "Storyboarding"], attestations: [2], createdAt }
+  ];
+  stats = { connections: 2, pointsToday: 10, totalPoints: 125 };
+  notifications = [];
+  notificationUnreadCount = 0;
+  $("#liveStatus").textContent = "● Static preview";
+  $$("[data-logout]").forEach(button => button.classList.add("hidden"));
+  $("#staticPreviewNotice").classList.remove("hidden");
+  showApp();
+}
+async function boot() { if (isStaticPreview) { initializeStaticPreview(); return; } try { const d = await api("/api/me"); if (d.user) { me = d.user; showApp() } } catch { } }
+function showApp() { $("#authScreen").classList.add("hidden"); $("#appScreen").classList.remove("hidden"); updateMe(); navigate("home"); if (isStaticPreview) { renderHome(); renderPeople(); renderConnections(); renderExchanges(); renderProofs(); renderFeed(); renderNotifications(); return; } refreshAll().catch(e => toast(e.message, true)) }
 function updateMe() { if (!me) return; $("#sideAvatar").textContent = me.avatar || initials(me.name); $("#topAvatar").textContent = me.avatar || initials(me.name); $("#composerAvatar").textContent = me.avatar || initials(me.name); $("#sideName").textContent = me.name; $("#sideEmail").textContent = me.email }
 async function refreshAll() { const [p, e, po, pr, s, m, n] = await Promise.all([api("/api/users"), api("/api/exchanges"), api("/api/posts"), api("/api/proofs"), api("/api/stats"), api("/api/me"), api("/api/notifications")]); people = p.users; exchanges = e.exchanges; posts = po.posts; proofs = pr.proofs; stats = s; notifications = n.notifications; notificationUnreadCount = n.unreadCount; me = m.user || me; updateMe(); renderHome(); renderPeople(); renderConnections(); renderExchanges(); renderProofs(); renderFeed(); renderNotifications() }
 function navigate(page) { $$(".page").forEach(x => x.classList.add("hidden")); $(`#page-${page}`)?.classList.remove("hidden"); $$(".nav-item").forEach(b => b.classList.toggle("active", b.dataset.page === page)); $("#pageTitle").textContent = pageTitles[page] || "Your profile"; if (page === "profile") renderProfile(); if (page === "connections") renderConnections() }
@@ -57,7 +84,22 @@ function editProfile() { openModal(`<h3>Edit your profile</h3><p class="muted">H
 document.addEventListener("click", e => { const profileLink = e.target.closest("[data-portfolio-profile]"); if (profileLink) { navigate("profile"); return } const rev = e.target.closest("[data-review]"); if (rev) { const exchange = exchanges.find(x => x.id === Number(rev.dataset.review)); if (!exchange) return; const otherId = Number(rev.dataset.other); openModal(`<h3>Review this skill swap</h3><p class="muted">Help the community recognize reliable collaborators.</p><form id="reviewForm"><div class="field"><label>Rating (1–5)</label><select name="rating" required><option value="5">5 — Excellent</option><option value="4">4 — Great</option><option value="3">3 — Good</option><option value="2">2 — Needs improvement</option><option value="1">1 — Poor</option></select></div><div class="field"><label>Feedback (optional)</label><textarea name="text" placeholder="What made this collaboration useful?"></textarea></div><button class="btn primary full">Submit review</button></form>`); $("#reviewForm").addEventListener("submit", async ev => { ev.preventDefault(); const f = Object.fromEntries(new FormData(ev.currentTarget)); try { await api("/api/reviews", { method: "POST", body: JSON.stringify({ ...f, toId: otherId, exchangeId: exchange.id }) }); closeModal(); await refreshAll(); toast("Thanks for sharing your feedback.") } catch (err) { toast(err.message, true) } }) } const reply = e.target.closest("[data-reply]"); if (reply) toast("Tip: open the community member's profile and connect to continue the conversation."); });
 // Real-time updates: when another signed-in browser changes shared data, refresh this view.
 let liveRefreshTimer = null;
-if (typeof io === "function") {
+if (isStaticPreview) {
+  const unavailableActions = "[data-connect], [data-swap], [data-attest], [data-exchange-action], [data-like], [data-review], [data-logout], [data-quiz-answer], [data-quiz-next], [data-quiz-restart], #addProofBtn, #publishPost, #editProfileBtn";
+  document.addEventListener("click", event => {
+    if (!event.target.closest(unavailableActions)) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    toast("This action requires the VibeLedger server.", true);
+  }, true);
+  document.addEventListener("submit", event => {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    toast("This action requires the VibeLedger server.", true);
+  }, true);
+}
+function connectSocket() {
+  if (typeof io !== "function") return;
   const socket = io();
   socket.on("connect", () => { const el = $("#liveStatus"); if (el) el.textContent = "● Live connected"; });
   socket.on("disconnect", () => { const el = $("#liveStatus"); if (el) el.textContent = "● Reconnecting…"; });
@@ -67,4 +109,15 @@ if (typeof io === "function") {
     liveRefreshTimer = setTimeout(() => refreshAll().catch(() => { }), 250);
   });
 }
-boot();
+if (isStaticPreview) {
+  boot();
+} else {
+  const socketScript = document.createElement("script");
+  socketScript.src = "socket.io/socket.io.js";
+  socketScript.addEventListener("load", connectSocket, { once: true });
+  socketScript.addEventListener("error", () => {
+    console.error("Failed to load the Socket.IO client.");
+  }, { once: true });
+  document.head.append(socketScript);
+  boot();
+}
