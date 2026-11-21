@@ -11,7 +11,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 const PORT = process.env.PORT || 3000;
-const DB_PATH = path.join(__dirname, "data", "db.json");
+const DB_PATH = process.env.DB_PATH || path.join(__dirname, "data", "db.json");
 fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
 
 const initialDB = {
@@ -102,10 +102,11 @@ function publicUser(u, db) {
 function safePost(p, db) { const u=db.users.find(x=>x.id===p.userId); return {...p, author:u?publicUser(u,db):null}; }
 function auth(req,res,next) { if (!req.session.userId) return res.status(401).json({error:"Please sign in to continue."}); next(); }
 app.use(express.json({limit:"1mb"}));
-app.use(session({ secret: process.env.SESSION_SECRET || "change-this-vibeledger-session-secret", resave:false, saveUninitialized:false, cookie:{ httpOnly:true, sameSite:"lax", maxAge: 7*24*60*60*1000 } }));
+if (process.env.NODE_ENV === "production") app.set("trust proxy", 1);
+app.use(session({ secret: process.env.SESSION_SECRET || "change-this-vibeledger-session-secret", resave:false, saveUninitialized:false, cookie:{ httpOnly:true, sameSite:"lax", secure:process.env.NODE_ENV === "production", maxAge: 7*24*60*60*1000 } }));
 app.use(express.static(path.join(__dirname, "public")));
 
-const UPLOAD_DIR = path.join(__dirname, "uploads");
+const UPLOAD_DIR = process.env.UPLOAD_DIR || path.join(__dirname, "uploads");
 fs.mkdirSync(UPLOAD_DIR, { recursive: true });
 const resumeStorage = multer.diskStorage({
   destination: (_req, _file, cb) => cb(null, UPLOAD_DIR),

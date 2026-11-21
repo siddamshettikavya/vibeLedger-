@@ -97,3 +97,13 @@ Open **My profile & resume** and upload PDF/DOC/DOCX (max 5 MB). The server stor
 
 ### Real-time behavior
 Socket.IO notifies connected browsers when the server data changes. This is real-time within the running Node.js server, not public hosting. For production, configure HTTPS, a durable database, secure session secret/cookies, and managed file storage.
+
+## Deploy to Render
+This application requires a Node.js host; GitHub Pages cannot run its Express API, sessions, or Socket.IO server. The included `render.yaml` configures a Render web service and a persistent disk for the JSON database and uploaded resumes.
+
+1. Push this folder to the GitHub repository you want to deploy.
+2. In Render, choose **New → Blueprint**, connect that GitHub repository, and use `render.yaml` as the Blueprint path.
+3. Review the Blueprint and create the service. It uses a paid 0.5 CPU / 512 MB instance and a 1 GB persistent disk; Render will generate the `SESSION_SECRET`.
+4. Wait for the first deploy, then open the service URL. The `/api/health` endpoint is used for health checks.
+
+The persistent disk keeps the JSON database and resumes across restarts and deploys. The app uses a JSON file for persistence and is intended for a single server instance; it is not suitable for scaling to multiple instances or production workloads with concurrent users.
